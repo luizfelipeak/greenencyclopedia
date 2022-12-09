@@ -1,0 +1,31 @@
+/* ---------- main ---------- */
+    main {
+        padding-left: var(--spc-default);
+        padding-right: var(--spc-default);
+    }
+
+    .contact-section {
+        display: grid;
+        justify-content: space-around;
+    }
+
+    .contact-section h2 {
+        font-family: var(--ff-body);
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .contact-section p {
+        max-width: 60vh;
+    }
+
+    .contact-section__socials {
+        display: flex;
+        justify-content: center;
+        gap: var(--spc-default);
+    }
+
+    .contact-section__socials svg {
+        color:  rgb(10, 102, 194);
+    }
+/* -------------------------- */

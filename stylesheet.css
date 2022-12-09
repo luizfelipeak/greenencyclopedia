@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?&family=Quicksand&display=swap');
+
+:root {
+    /* ----- Font Families ----- */
+        --ff-body: 'Quicksand', 'Calibri', sans-serif;
+    /* ------------------------- */
+
+    /* ----- Default 16px ----- */
+        /* 64px */
+        --fs-xxxlg: 4rem;
+        /* 40px */
+        --fs-xxlg: 2.5rem;
+        /* 32px */
+        --fs-xlg: 2rem;
+        /* 24px */
+        --fs-lg: 1.5rem;
+        /* 16px */
+        --fs-default: 1rem;
+        /* 15px */
+        --fs-sm: 0.9375rem;
+        /* 12px */
+        --fs-xsm: 0.75rem;
+    /* ------------------------ */
+
+    /* ----- Spacing ----- */
+        --spc-xxxlg: 32em;
+        --spc-xxlg: 16em;
+        --spc-xlg: 8em;
+        --spc-lg: 4em;
+        --spc-md: 2em;
+        --spc-default: 1em;
+        --spc-sm: 0.5em;
+        --spc-xsm: 0.25em;
+    /* ------------------- */
+
+    /* ----- Colors ----- */
+        --bg-light: hsla(80, 100%, 95%, 1);
+        --bg-medium: hsla(80, 52%, 83%, 1);
+        --bg-dark: hsla(80, 30%, 40%, 1);
+        --alert: hsl(355, 77%, 56%);
+
+        --black: hsl(0, 0%, 20%);
+        --black-75: hsla(0, 0%, 0%, 75%);
+        --black-50: hsla(0, 0%, 0%, 50%);
+        --black-25: hsla(0, 0%, 0%, 25%);
+        --black-10: hsla(0, 0%, 0%, 10%);
+
+        --white: hsla(0, 0%, 100%, 1);
+
+        --hover-color: hsl(80, 60%, 40%);
+        --active-color: hsla(80, 100%, 70%, 1);
+    /* ------------------ */
+
+    --color: var(--black);
+    --theme: var(--bg-light);
+    --shadow: var(--black-10);
+}
+
+/* ---------- CSS Reset ---------- */
+    /* Box sizing rules */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Set core root defaults */
+    html:focus-within {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        text-rendering: optimizeSpeed;
+        line-height: 1.5;
+    }
+
+    /* A elements that don't have a class get default styles */
+    a:not([class]) {
+        text-decoration-skip-ink: auto;
+    }
+
+    /* Make images easier to work with */
+    img,
+    picture {
+        max-width: 100%;
+        display: block;
+    }
+
+    /* Inherit fonts for inputs and buttons */
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+    @media (prefers-reduced-motion: reduce) {
+        html:focus-within {
+            scroll-behavior: auto;
+        }
+      
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+/* ------------------------------- */
+
+body {
+    color: var(--color);
+    background-color: var(--theme);
+}
+
+/* ----------- Header ----------- */
+    .header-nav {
+        z-index: 1;
+        padding-block: var(--spc-sm);
+    }
+
+    .nav-site {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: var(--spc-md);
+    }
+
+    .nav-logo {
+        color: var(--color);
+    }
+
+    .nav-logo:hover,
+    .nav-logo:focus-visible {
+        color: var(--hover-color);
+    }
+
+    .nav-logo svg {
+        display: block;
+    }
+
+    #nav-btn {
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border: none;
+        color: var(--color);
+        background-color: transparent;
+    }
+
+    #nav-btn:active {
+        color: var(--hover-color);
+    }
+
+    #nav-btn svg,
+    #close-modal svg {
+        display: block;
+        margin: auto;
+    }
+
+    .nav-bar {
+        display: none;
+        list-style: none;
+        font-family: var(--ff-body);
+    }
+
+    .nav-bar a {
+        color: var(--color);
+        text-decoration: none;
+    }
+
+    .nav-bar a:hover,
+    .nav-bar a:focus-visible {
+        color: var(--hover-color);
+    }
+
+    /* ------------ Modal (Mobile) ------------ */
+        #modal-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background: linear-gradient(180deg, var(--black-10), var(--black-25));
+
+            padding-top: 3em;
+            z-index: 1;
+            display: none;
+        }
+
+        #modal-nav[data-state="opened"] {
+            display: block;
+        }
+
+        .modal-content {
+            max-width: 15rem;
+            padding: var(--spc-default);
+            margin-bottom: var(--spc-default);
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+            background-color: var(--theme);
+            box-shadow: 0 0.2em 0.5em var(--black-25);
+            position: relative;
+        }
+
+        .modal-content a {
+            color: var(--color);
+            text-decoration: none;
+        }
+
+        .modal-content a:hover,
+        .modal-content a:focus-visible {
+            color: var(--hover-color);
+        }
+
+        #close-modal {
+            position: absolute;
+            top: 0.5em;
+            right: 0.5em;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border: none;
+            padding: 0;
+            color: var(--color);
+            background-color: var(--theme);
+        }
+
+        #close-modal:active {
+            color: var(--hover-color);
+        }
+
+        .modal-nav-bar {
+            display: grid;
+            list-style: none;
+            justify-content: center;
+            gap: var(--spc-xsm);
+
+            font-family: var(--ff-title);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        #mobileDropdownBtn[aria-expanded="true"] + .nav-plants {
+            display: block;
+        }
+
+        .dropdown .btn {
+            cursor: pointer;
+            color: var(--color);
+            background-color: transparent;
+            border: none;
+        }
+
+        .dropdown svg {
+            color: var(--color);
+            vertical-align: text-bottom;
+        }
+
+        .nav-plants {
+            display: none;
+            list-style: none;
+            padding: 0.5em;
+            background-color: var(--bg-medium);
+        }
+
+        .nav-plants[data-state="opened"] {
+            display: block;
+        }
+    /* ---------------------------------------- */
+/* ------------------------------ */
+
+/* ---------- main ---------- */
+    main {
+        padding-left: var(--spc-default);
+        padding-right: var(--spc-default);
+    }
+
+    .catalog-section {
+        color: var(--color);
+        background-color: var(--theme);
+    }
+
+    .catalog-section__title {
+        font-size: var(--fs-xsm);
+        text-align: center;
+        margin-bottom: var(--spc-default);
+    }
+
+    .catalog-section__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 18rem));
+        justify-content: center;
+        gap: var(--spc-default);
+    }
+
+    .catalog-section__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        padding: var(--spc-default);
+        background-color: hsl(88, 50%, 90%);
+    }
+
+    .catalog-section__item h2 {
+        font-size: var(--fs-default);
+        text-align: center;
+    }
+/* -------------------------- */
+
+/* ------------ Footer ------------ */
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spc-xsm);
+        padding-top: var(--spc-default);
+        padding-bottom: var(--spc-default);
+
+        font-size: clamp(var(--fs-xsm), 1vw + 0.5rem, var(--fs-default));
+        color: var(--color);
+    }
+/* -------------------------------- */
+
+/* ------------ Desktop (700px) ------------ */
+    @media (min-width: 43.75rem) {
+        /* --------- header --------- */
+            .header-nav {
+                padding-top: var(--spc-lg);
+                padding-bottom: var(--spc-lg);
+            }
+
+            .nav-site {
+                justify-content: center;
+            }
+
+            #nav-btn,
+            #modal-nav[data-state="opened"] {
+                display: none;
+            }
+
+            .nav-bar {
+                display: flex;
+                gap: var(--spc-default);
+            }
+
+            #dropdownBtn[aria-expanded="true"] + .nav-plants {
+                display: block;
+            }
+
+            .nav-plants {
+                position: absolute;
+                top: 1.5em;
+            }
+        /* -------------------------- */
+    }
+/* ----------------------------------------- */

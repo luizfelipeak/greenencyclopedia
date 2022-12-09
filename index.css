@@ -1,0 +1,28 @@
+/* ---------- main ---------- */
+    .about-section__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spc-default);
+        padding: var(--spc-default);
+    }
+
+    .about-section__photo {
+        width: 20rem;
+    }
+
+    .about-section__info {
+        max-width: 40ch;
+    }
+/* -------------------------- */
+
+/* ------------ Desktop (700px) ------------ */
+    @media (min-width: 43.75rem) {
+        /* ---------- main ---------- */
+            .about-section__container {
+                flex-direction: row;
+            }
+        /* -------------------------- */
+    }
+/* ----------------------------------------- */
